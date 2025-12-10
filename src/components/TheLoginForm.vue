@@ -8,6 +8,7 @@
     <form :class="InputForm">
         <TheInput type="text" :Placeholder="EmailField" :Value="EmailValue"/>
         <TheInput type="text" :Placeholder="PasswordField" :Value="PasswordValue" FieldType="password" />
+        <button :class="LoginButton">로그인하기</button>
     </form>
 
   </div>
@@ -27,6 +28,7 @@ export default {
     const SubTitle = ref('SubTitle')
     const TextArea = ref('TextArea')
     const InputForm = ref('InputForm')
+    const LoginButton = ref('LoginButton')
 
     const EmailField = ref('이메일을 입력해주세요')
     const PasswordField = ref('비밀번호를 입력해주세요')
@@ -41,7 +43,8 @@ export default {
         PasswordField,
         EmailValue,
         PasswordValue,
-        InputForm
+        InputForm,
+        LoginButton
     }
  }
  
@@ -86,6 +89,17 @@ export default {
         align-items: center;
         flex-direction: column;
         gap : 24px;
+    }
+    
+    .LoginButton{
+        border : 1px solid #FFFFFF;
+        background-color : #3E3E3E;
+        color : #FFFFFF;
+        font-family: "JR";
+        font-size: 24px;
+        width: 320px;
+        height: 60px;
+        border-radius: 12px;
     }
     
 </style>
