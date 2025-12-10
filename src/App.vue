@@ -1,21 +1,19 @@
 <template>
 
-    <LoginForm />
-
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import LoginForm from "./components/TheLoginForm.vue"
+
 export default {
   name: 'App',
-  components:{
-    LoginForm
-  }
 
 }
 </script>
 
-<style>
+<style >
 html, body, #app {
   width: 100%;
   height: 100%;
@@ -30,19 +28,19 @@ html, body, #app {
 
 @font-face {
   font-family:'JB';
-  src: url('./fonts/jb.ttf') format('truetype');
+  src: url('./assets/fonts/jb.ttf') format('truetype');
 }
 
 
 @font-face {
   font-family:'JR';
-  src: url('./fonts/jr.ttf') format('truetype');
+  src: url('./assets/fonts/jr.ttf') format('truetype');
 }
 
 
 @font-face {
   font-family:'JL';
-  src: url('./fonts/jl.ttf') format('truetype');
+  src: url('./assets/fonts/jl.ttf') format('truetype');
 }
 
 </style>

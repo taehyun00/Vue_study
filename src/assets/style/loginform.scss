@@ -1,0 +1,49 @@
+.LoginForm{
+        width: 320px;
+        height: 70vh;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap : 64px;
+    }
+
+.TextArea{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+.Title{
+        font-family: 'JR';
+        font-size: 64px;
+        color : #BA7EFF;
+    }
+
+.SubTitle{
+        font-family: 'JR';
+        font-size: 25px;
+        color : #ffffff;
+        margin-top: -60px;
+    }
+
+.InputForm{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap : 24px;
+    }
+    
+.LoginButton{
+        border : 1px solid #FFFFFF;
+        background-color : #3E3E3E;
+        color : #FFFFFF;
+        font-family: "JR";
+        font-size: 24px;
+        width: 320px;
+        height: 60px;
+        border-radius: 12px;
+}
