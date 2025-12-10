@@ -1,23 +1,48 @@
 <template>
-  <div>
-    <HeaderComponents />
-  </div>
+
+    <LoginForm />
+
 </template>
 
 <script>
-import HeaderComponents from "./components/HeaderComponents.vue"
+import LoginForm from "./components/TheLoginForm.vue"
 export default {
   name: 'App',
   components:{
-    HeaderComponents
+    LoginForm
   }
 
 }
 </script>
 
 <style>
-#app {
-  width: 100vw;
-  height: 100vh;
+html, body, #app {
+  width: 100%;
+  height: 100%;
+  background-color: #3E3E3E;
+  margin: 0 ;
+  padding : 0 ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
+
+@font-face {
+  font-family:'JB';
+  src: url('./fonts/jb.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family:'JR';
+  src: url('./fonts/jr.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family:'JL';
+  src: url('./fonts/jl.ttf') format('truetype');
+}
+
 </style>
