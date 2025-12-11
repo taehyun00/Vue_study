@@ -1,22 +1,32 @@
 <template>
-  <div>
+  <div class="MainLayout">
     <TheHeader />
     <TheTimer />
+    <TheSearch />
   </div>
 </template>
 
 <script>
 import TheHeader from '@/components/common/TheHeader.vue';
+import TheSearch from '@/components/Main/TheSearch.vue';
 import TheTimer from '@/components/Main/TheTimer.vue';
 
 export default {
     name : "MainView",
     components : {
         TheHeader,
-        TheTimer
+        TheTimer,
+        TheSearch
     }
 }
 </script>
 
 <style>
+  .MainLayout{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap : 120px;
+    padding: 24px;
+  }
 </style>
