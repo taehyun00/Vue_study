@@ -1,9 +1,17 @@
 <template>
-  <div v-for="(item, index) in Result" :key="index" class="SearchListLayout">
-    <p class="Title">{{ removeMarkdown(item.title) }} <span class="SubTitle">{{ item.category }}</span></p>
-    <p class="Address">{{ item.address }}</p>
-    <a v-if = "item.link" :href="item.link" target="_blank" rel="noopener noreferrer" class="Link">바로가기</a>
-  </div>
+    <div  v-if="Result.length > 0">
+        <div v-for="(item, index) in Result" :key="index" class="SearchListLayout">
+            <p class="Title">{{ removeMarkdown(item.title) }} <span class="SubTitle">{{ item.category }}</span></p>
+            <p class="Address">{{ item.address }}</p>
+            <a v-if="item.link" :href="item.link" target="_blank" rel="noopener noreferrer" class="Link">바로가기</a>
+        </div>
+    </div>
+
+    <div v-else>
+        <div class="EmptyResult">
+            <p class="Address">검색결과가 없습니다</p>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -25,9 +33,9 @@ export default {
 </script>
 
 <style>
+
 .SearchListLayout{
-    margin-top : -120px;
-    margin-bottom: 30px;
+    height: auto;
 }
 
 .Title{
@@ -45,12 +53,17 @@ export default {
         font-family: 'JL';
         font-size: 32px;
         color : #ffffff;
-        margin-top : -50px;
-        margin-bottom: 30px;
     }
 .Link {
     font-family: 'JL';
     font-size: 24px;
     color : #BA7EFF;
+    text-decoration-line : none;
+}
+
+.EmptyResult{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>

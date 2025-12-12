@@ -5,7 +5,9 @@
   </div>
   <button class="SearchButton" @click="handleSearch">검색하기</button>
   </div>
+  <div class="SearchResult">
   <TheSearchList :Result="Result" />
+  </div>
 </template>
 
 <script>
@@ -33,7 +35,8 @@ export default {
           {
             params: {
               query: SearchValue.value,
-              display : 5
+              display : 5,
+              sort : 'comment',
             },
             headers: {
               'X-Naver-Client-Id': 'NLMWWxgnNyMWSFmrzggP',
@@ -63,6 +66,10 @@ export default {
 </script>
 
 <style>
+  .SearchResult {
+    margin-top : -120px;
+  }
+
   .SearchLayout{
     width: 100%;
     height: auto;
@@ -85,5 +92,11 @@ export default {
     font-size: 24px;
     color : #FFFFFF;
     height: 36px;
+    transition: all 0.2s ease-in-out;
+  }
+  .SearchButton:hover {
+  color: #BA7EFF;
+  background-color: #3E3E3E;
+  border : 1px solid #BA7EFF;
   }
 </style>
