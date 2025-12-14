@@ -6,8 +6,8 @@
         </div>
 
     <form class="InputForm">
-        <TheInput type="text" :Placeholder="EmailField" :Value="EmailValue"/>
-        <TheInput type="text" :Placeholder="PasswordField" :Value="PasswordValue" FieldType="password" />
+        <TheInput type="text" :Placeholder="EmailField" v-model:Value="EmailValue"/>
+        <TheInput type="text" :Placeholder="PasswordField" v-model:Value="PasswordValue" FieldType="password" />
         <button class="LoginButton" @click="HnadleLogin">로그인하기</button>
     </form>
 
@@ -20,6 +20,7 @@
 import {ref} from "vue"
 import { useRouter } from "vue-router";
 import TheInput from "../common/TheInput.vue";
+import axios from "axios";
 export default {
  name : 'LoginForm',
  components: {
@@ -36,9 +37,33 @@ export default {
         router.push("/signup")
     }
 
-    const HnadleLogin = () =>  {
+    const HnadleLogin = async (e) => {
+    e.preventDefault() 
+
+    const formData = new URLSearchParams()
+    formData.append("grant_type", "password")
+    formData.append("username", EmailValue.value)       
+    formData.append("password", PasswordValue.value)
+
+    const response = await axios.post(
+        "http://localhost:8000/token",
+        formData,
+        {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+        }
+    )
+
+    console.log(response.data)
+
+
+    localStorage.setItem("access_token", response.data.access_token)
+    if(response.data.access_token){
         router.push("/main")
     }
+}
+
         
     return{
         EmailField,
@@ -46,7 +71,8 @@ export default {
         EmailValue,
         PasswordValue,
         HnadleSignUp,
-        HnadleLogin
+        HnadleLogin,
+        axios
     }
  },
 

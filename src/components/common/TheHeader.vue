@@ -2,16 +2,44 @@
   <div class="Header">
     <img src="../../assets/svg/logo.svg" width="180px" />
 
+    <div>
+        <p>방목록</p>
+        <p>방생성</p>
+    </div>
+
     <div class="Infomation">
-        <p class="AccentText"><span class="NameText">김태현</span>님</p>
+        <p class="AccentText"><span class="NameText">{{ username }}</span>님</p>
         <p class="AccentText">로그아웃</p>
     </div>
   </div>
 </template>
 
-<script>
+<script >
+import axios from "axios";
+import { ref,watch } from 'vue';
+
 export default {
-    name : 'TheHeader'
+    name : 'TheHeader',
+    setup(){
+        const token = ref(localStorage.getItem("access_token"));
+        const username = ref();
+        watch(token, async (newToken) => {
+            if (!newToken) return
+
+            const res = await axios.get("http://localhost:8000/me", {
+                headers: {
+                Authorization: `Bearer ${newToken}`,
+                },
+            })
+
+            username.value = res.data.name
+            },{ immediate: true })
+
+        return{
+            axios,
+            username
+        }
+    }
 }
 </script>
 
