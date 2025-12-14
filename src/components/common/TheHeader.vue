@@ -2,9 +2,9 @@
   <div class="Header">
     <img src="../../assets/svg/logo.svg" width="180px" />
 
-    <div>
-        <p>방목록</p>
-        <p>방생성</p>
+    <div class="Infomation">
+        <p class="AccentText" @click="HandleList">방목록</p>
+        <p class="AccentText" @click="HandleCreate">방생성</p>
     </div>
 
     <div class="Infomation">
@@ -17,10 +17,12 @@
 <script >
 import axios from "axios";
 import { ref,watch } from 'vue';
+import { useRouter } from "vue-router";
 
 export default {
     name : 'TheHeader',
     setup(){
+        const router = useRouter();
         const token = ref(localStorage.getItem("access_token"));
         const username = ref();
         watch(token, async (newToken) => {
@@ -35,9 +37,21 @@ export default {
             username.value = res.data.name
             },{ immediate: true })
 
+        
+        const HandleCreate =() => {
+            router.push("/create")
+        }
+        const HandleList =() => {
+            router.push("/list")
+        }
+
         return{
             axios,
-            username
+            username,
+            router,
+
+            HandleCreate,
+            HandleList
         }
     }
 }
@@ -45,7 +59,7 @@ export default {
 
 <style scoped>
     .Header{
-        width: 100%;
+        width: 100vw;
         border : none;
         background-color: #2b2b2ba2;
         height: 70px;
@@ -54,7 +68,7 @@ export default {
         left: 0;
         top : 0;
         justify-content: space-around;
-        gap : 1024px;
+        align-items: center;
     }
     
     .Infomation{
